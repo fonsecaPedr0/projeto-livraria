@@ -11,7 +11,7 @@ namespace Livraria
 
         [Required(ErrorMessage = "Deve ser informado o nome")]
         [Display(Name =  "Informe o nome")]
-        [StringLength(150, ErrorMessage = "O nome deve conter no máximo")]
+        [StringLength(150, ErrorMessage = "O nome deve conter no máximo 150 caracteres")]
         public string? Nome {get; set;}
 
         [StringLength(100, ErrorMessage = "O lagradouro deve conter no máximo 100 caracteres")]
@@ -26,13 +26,18 @@ namespace Livraria
         [Display(Name = "Informe o numero")]
         public string? Numero {get; set;}
 
+        [Required(ErrorMessage = "Informe o telefone")]
+        [StringLength(100)]
+        [DataType(DataType.PhoneNumber)]
         public string? Telefone {get; set;}
 
         [Required(ErrorMessage = "É necessário informar o email para realizar o cadastro")]
-        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Informe o Email")]
+        [StringLength(100)]
         public string? Email {get; set;}
 
+        [Display(Name = "CEP")]
         public Cep? Cep {get; set;}
     }
 }
